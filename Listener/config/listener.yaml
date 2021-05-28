@@ -1,0 +1,3 @@
+listener_topic_name: /ros-docker
+
+node_rate: 10  # [Hertz]

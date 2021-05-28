@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>Listener</name>
+  <version>0.0.0</version>
+  <description>Subscriber Node based on catkin workspace with ROS-1</description>
+  <maintainer email="aliasgar.zm@somaiya.edu">Aliasgar Merchant</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!--Other depends-->
+  <depend>rospy</depend>
+
+  <export>
+  </export>
+</package>
