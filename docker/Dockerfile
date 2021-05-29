@@ -1,7 +1,7 @@
-ARG ROS_DISTRO=melodic
+ARG ROS_DISTRO=noetic
 FROM ros:$ROS_DISTRO-ros-core
 ARG PYTHON_VERSION=3
-LABEL Name="ROS Docker Deployment"
+LABEL Name="ROS Node Example"
 LABEL Version="0.1"
 
 # Make the user and group consistent and known.
