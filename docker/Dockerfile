@@ -1,108 +1,54 @@
-ARG ROS_DISTRO=melodic
-FROM ros:$ROS_DISTRO-ros-core
-ARG PYTHON_VERSION=3
-LABEL Name="ROS Docker Deployment"
-LABEL Version="0.1"
+# this dockerfile roughly follows the 'Ubuntu install of ROS Melodic' from:
+#   http://wiki.ros.org/melodic/Installation/Ubuntu
+#
+ARG BASE_IMAGE=nvcr.io/nvidia/l4t-base:r32.4.4
+FROM ${BASE_IMAGE}
 
-# Make the user and group consistent and known.
-ARG USER_ID=1004
-ARG GROUP_ID=1000
+ARG ROS_PKG=ros_base
+ENV ROS_DISTRO=melodic
+ENV ROS_ROOT=/opt/ros/${ROS_DISTRO}
 
-# Run the following commands as the root user.
-USER root
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Update PATH to include local pip installs.
-ENV PATH="/home/ros/.local/bin:${PATH}"
+WORKDIR /workspace
 
-# Workaround for sudo bug on Ubuntu Focal.
-# https://unix.stackexchange.com/questions/578949/sudo-setrlimitrlimit-core-operation-not-permitted
-# https://github.com/sudo-project/sudo/issues/42
-RUN echo "Set disable_coredump false" >> /etc/sudo.conf
+# add the ROS deb repo to the apt sources list
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+          git \
+		cmake \
+		build-essential \
+		curl \
+		wget \
+		gnupg2 \
+		lsb-release \
+    && rm -rf /var/lib/apt/lists/*
 
-# Packages needed for various utility steps.
-RUN apt-get update && apt-get install -y \
-    build-essential curl file git locales sudo && \
-    apt-get clean
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
-# Set up the locale.
-RUN locale-gen en_US en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8
+# install ROS packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+		ros-melodic-ros-base \
+		ros-melodic-image-transport \
+		ros-melodic-vision-msgs \
+          python-rosdep \
+          python-rosinstall \
+          python-rosinstall-generator \
+          python-wstool \
+    && rm -rf /var/lib/apt/lists/*
 
-# Statick npm tools.
-# Have to install newer version from non-apt source due to SSL library compatibility issues.
-RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt-get update && apt-get install -y nodejs && apt-get clean
-RUN npm config set prefix -g /usr
-RUN npm install -g markdownlint-cli@0.21.0
+# init/update rosdep
+RUN apt-get update && \
+    cd ${ROS_ROOT} && \
+    rosdep init && \
+    rosdep update && \
+    rm -rf /var/lib/apt/lists/*
 
-# Build and static analysis tools.
-RUN apt-get update && apt-get install -y \
-    bandit \
-    cccc \
-    clang \
-    clang-6.0 \
-    clang-format \
-    clang-format-6.0 \
-    clang-tidy \
-    clang-tidy-6.0 \
-    cmake \
-    cppcheck \
-    findbugs \
-    flawfinder \
-    libomp-dev \
-    libpcre3-dev \
-    libxml2 \
-    libxml2-utils \
-    pyflakes \
-    pylint \
-    python$PYTHON_VERSION-catkin-lint \
-    python$PYTHON_VERSION-git \
-    python$PYTHON_VERSION-pip \
-    python$PYTHON_VERSION-rosdep \
-    python$PYTHON_VERSION-vcstools \
-    python$PYTHON_VERSION-wstool \
-    python3-pep8 \
-    python3-setuptools \
-    python3-vcstools \
-    python3-yaml \
-    python3-yapsy \
-    ros-$ROS_DISTRO-roslint \
-    uncrustify && \
-    apt-get clean
-
-# Upgrade pip.
-RUN python$PYTHON_VERSION -m pip install --upgrade pip && python3 -m pip install --upgrade pip
-
-# Install packages with pip.
-RUN pip3 install --upgrade catkin_pkg pytest statick statick-md statick-web
-# black removed until Python 3.5 support is no longer needed (Python 3.5 is default for xenial/kinetic)
-
-# Temporarily needed for Noetic until a proper fix is applied upstream.
-RUN python3 -m pip install git+https://github.com/catkin/catkin_tools.git
-
-# Need to initialize rosdep as root.
-RUN rosdep init
-
-# Regular user setup.
-RUN groupadd -g $GROUP_ID ros && \
-    useradd -m ros -s /bin/bash -u $USER_ID -g ros -d /home/ros
-
-# Allow passwordless sudo.
-RUN echo "ros ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
-    chmod 0440 /etc/sudoers.d/ros
-
-# Switch to regular user.
-USER ros
-
-# Get latest rosdep sources.
-RUN rosdep update
-
-# Make a workspace directory that can be mounted as a volume from the host system.
-# This approach is taken so that the actual packages to build reside on the host system where the users preferred
-# development tools can be used when editing files.
-RUN mkdir /home/ros/ws
-RUN mkdir /home/ros/desktop
-RUN mkdir /home/ros/documents
-RUN mkdir /home/ros/downloads
-
-CMD roscore
+# setup entrypoint
+COPY ./packages/ros_entrypoint.sh /ros_entrypoint.sh
+RUN echo 'source /opt/ros/${ROS_DISTRO}/setup.bash' >> /root/.bashrc
+ENTRYPOINT ["/ros_entrypoint.sh"]
+CMD ["bash"]
+WORKDIR /
