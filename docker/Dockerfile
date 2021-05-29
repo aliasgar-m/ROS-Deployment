@@ -20,9 +20,9 @@ ENV PATH="/home/ros/.local/bin:${PATH}"
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 
 # Packages needed for various utility steps.
-RUN apt-get update && apt-get install -y \
-    build-essential curl file git locales sudo && \
-    apt-get clean
+# RUN apt-get update && apt-get install -y \
+#     build-essential curl file git locales sudo && \
+#     apt-get clean
 
 # Set up the locale.
 RUN locale-gen en_US en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8
