@@ -1,54 +1,39 @@
-# this dockerfile roughly follows the 'Ubuntu install of ROS Melodic' from:
-#   http://wiki.ros.org/melodic/Installation/Ubuntu
-#
-ARG BASE_IMAGE=nvcr.io/nvidia/l4t-base:r32.4.4
-FROM ${BASE_IMAGE}
+# This is an auto generated Dockerfile for ros:ros-core
+# generated from docker_images/create_ros_core_image.Dockerfile.em
+FROM ubuntu:bionic
 
-ARG ROS_PKG=ros_base
-ENV ROS_DISTRO=melodic
-ENV ROS_ROOT=/opt/ros/${ROS_DISTRO}
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-WORKDIR /workspace
-
-# add the ROS deb repo to the apt sources list
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-          git \
-		cmake \
-		build-essential \
-		curl \
-		wget \
-		gnupg2 \
-		lsb-release \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-
-# install ROS packages
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-		ros-melodic-ros-base \
-		ros-melodic-image-transport \
-		ros-melodic-vision-msgs \
-          python-rosdep \
-          python-rosinstall \
-          python-rosinstall-generator \
-          python-wstool \
-    && rm -rf /var/lib/apt/lists/*
-
-# init/update rosdep
-RUN apt-get update && \
-    cd ${ROS_ROOT} && \
-    rosdep init && \
-    rosdep update && \
+# setup timezone
+RUN echo 'Etc/UTC' > /etc/timezone && \
+    ln -s /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
+    apt-get update && \
+    apt-get install -q -y --no-install-recommends tzdata && \
     rm -rf /var/lib/apt/lists/*
 
+# install packages
+RUN apt-get update && apt-get install -q -y --no-install-recommends \
+    dirmngr \
+    gnupg2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# setup keys
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+# setup sources.list
+RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list
+
+# setup environment
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
+
+ENV ROS_DISTRO melodic
+
+# install ros packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-melodic-ros-core=1.4.1-0* \
+    && rm -rf /var/lib/apt/lists/*
+
 # setup entrypoint
-COPY ./packages/ros_entrypoint.sh /ros_entrypoint.sh
-RUN echo 'source /opt/ros/${ROS_DISTRO}/setup.bash' >> /root/.bashrc
+COPY ./ros_entrypoint.sh /
+
 ENTRYPOINT ["/ros_entrypoint.sh"]
 CMD ["bash"]
-WORKDIR /
