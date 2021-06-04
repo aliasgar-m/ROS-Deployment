@@ -1,6 +1,5 @@
-ARG ROS_DISTRO=noetic
-FROM ros:$ROS_DISTRO-ros-core
-ARG PYTHON_VERSION=3
+FROM scratch
+
 LABEL Name="ROS Node Example"
 LABEL Version="0.1"
 
@@ -29,11 +28,29 @@ RUN locale-gen en_US en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8
 
 # Statick npm tools.
 # Have to install newer version from non-apt source due to SSL library compatibility issues.
-RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt-get update && apt-get install -y nodejs && apt-get clean
-RUN npm config set prefix -g /usr
-RUN npm install -g markdownlint-cli@0.21.0
+# RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+# RUN bash nodesource_setup.sh
+# RUN apt-get update && apt-get install -y nodejs && apt-get clean
+# RUN npm config set prefix -g /usr
+# RUN npm install -g markdownlint-cli@0.21.0
 
 # Build and static analysis tools.
 RUN apt-get update && apt-get install -y
+
+RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
+RUN apt install ros-melodic-desktop-full
+
+RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc \
+    source ~/.bashrc
+    
+RUN apt install python-rosdep \
+    apt install python-pip \
+    apt install python-catkin-tools \
+    apt upgrade libignition-math2 \
+    pip install shapely && \
+    pip install wstool
+
+RUN rosdep init
+
+RUN rosdep update
