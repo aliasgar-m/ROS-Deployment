@@ -8,6 +8,9 @@ ENV PATH="/home/ros/.local/bin:${PATH}"
 
 RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
+RUN echo "ros ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
+    chmod 0440 /etc/sudoers.d/ros
+
 RUN apt-get update
 
 RUN apt-get install ros-melodic-desktop-full
