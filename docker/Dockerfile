@@ -1,5 +1,5 @@
-FROM scratch
-
+ARG ROS_DISTRO=melodic
+FROM ros:$ROS_DISTRO-ros-core
 LABEL Name="ROS Node Example"
 LABEL Version="0.1"
 
@@ -8,23 +8,18 @@ ARG USER_ID=1004
 ARG GROUP_ID=1000
 
 # Run the following commands as the root user.
-USER rosdoc
-
-RUN secho "rosdoc ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/rosdoc && \
-    chmod 0440 /etc/sudoers.d/rosdoc
+USER root
 
 # Update PATH to include local pip installs.
 ENV PATH="/home/ros/.local/bin:${PATH}"
 
-RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-
 # Build and static analysis tools.
 RUN apt update
 
-RUN apt install ros-melodic-desktop-full
+# RUN apt install ros-melodic-desktop-full
 
-RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-RUN source ~/.bashrc
+# RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+# RUN source ~/.bashrc
     
 RUN apt install python-rosdep \
     apt install python-pip \
@@ -36,3 +31,5 @@ RUN apt install python-rosdep \
 RUN rosdep init
 
 RUN rosdep update
+
+RUN mkdir /home/ros/ws
