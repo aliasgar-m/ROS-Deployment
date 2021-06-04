@@ -20,10 +20,12 @@ RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E
 # Build and static analysis tools.
 RUN apt-get update && apt-get install -y \
     python-rosdep \
-    python-pip \
-    python-catkin-tools \
-    apt-get upgrade libignition-math2 \
-    pip install shapely && \
+    python-pip && \
+    python-catkin-tools
+
+RUN apt-get upgrade libignition-math2
+
+RUN pip install shapely && \
     pip install wstool
 
 # RUN apt install ros-melodic-desktop-full
