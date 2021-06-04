@@ -14,7 +14,10 @@ USER root
 ENV PATH="/home/ros/.local/bin:${PATH}"
 
 # Build and static analysis tools.
-RUN apt update
+RUN apt-get update && apt-get install -y \
+    build-essential curl file git locales sudo && \
+    apt-get clean
+    apt-get upgrade
 
 # RUN apt install ros-melodic-desktop-full
 
