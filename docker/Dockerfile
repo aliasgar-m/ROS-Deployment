@@ -7,11 +7,11 @@ LABEL Version="0.1"
 ARG USER_ID=1004
 ARG GROUP_ID=1000
 
-RUN secho "ros ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
-    chmod 0440 /etc/sudoers.d/ros
-
 # Run the following commands as the root user.
-# USER root
+USER rosdoc
+
+RUN secho "rosdoc ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/rosdoc && \
+    chmod 0440 /etc/sudoers.d/rosdoc
 
 # Update PATH to include local pip installs.
 ENV PATH="/home/ros/.local/bin:${PATH}"
