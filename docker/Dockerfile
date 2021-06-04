@@ -1,3 +1,7 @@
+FROM scratch
+# ARG ROS_DISTRO=melodic
+# FROM ros:$ROS_DISTRO-ros-core
+
 USER root
 
 ENV PATH="/home/ros/.local/bin:${PATH}"
