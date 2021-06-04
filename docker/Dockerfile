@@ -15,15 +15,14 @@ ENV PATH="/home/ros/.local/bin:${PATH}"
 
 # Build and static analysis tools.
 RUN apt-get update \
-    apt-get install -y 
 
 # RUN apt install ros-melodic-desktop-full
 
 # RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 # RUN source ~/.bashrc
     
-# RUN apt install python-rosdep \
-#     apt install python-pip \
+RUN apt-get install python-rosdep \
+    apt-get install python-pip \
 #     apt install python-catkin-tools \
 #     apt upgrade libignition-math2 \
 #     pip install shapely && \
