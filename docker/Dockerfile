@@ -7,15 +7,14 @@ LABEL Version="0.1"
 ARG USER_ID=1004
 ARG GROUP_ID=1000
 
+RUN sudo secho "ros ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
+    chmod 0440 /etc/sudoers.d/ros
+
 # Run the following commands as the root user.
 USER root
 
 # Update PATH to include local pip installs.
 ENV PATH="/home/ros/.local/bin:${PATH}"
-
-RUN sudo secho "ros ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
-    chmod 0440 /etc/sudoers.d/ros
-
 
 RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
