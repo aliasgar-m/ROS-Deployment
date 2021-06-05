@@ -54,8 +54,6 @@ RUN python -m pip install --upgrade pip
 RUN rosdep init
 RUN rosdep update
 
-RUN mkdir /home/ros/ws
-
 # ARG USER_ID=1004
 # ARG GROUP_ID=1000
 
