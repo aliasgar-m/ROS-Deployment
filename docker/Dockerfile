@@ -58,4 +58,4 @@ RUN rosdep update
 # ARG GROUP_ID=1000
 
 RUN echo "source ~/opt/ros/melodic/setup.bash" >> ~/.bashrc
-# RUN source ~/.bashrc
+RUN source ~/.bashrc
