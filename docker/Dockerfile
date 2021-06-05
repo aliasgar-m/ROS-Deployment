@@ -21,15 +21,17 @@ ENV PATH="/home/ros/.local/bin:${PATH}"
 RUN apt-get clean
 
 RUN apt-get update && apt-get install -y \
-    python-rosdep && \
-    python-pip
+    python-rosdep \
+    python-pip \
+    python-wstool && \
+    python-shapely
     # python-catkin-tools
 
 RUN apt-get upgrade -y \ 
     libignition-math2
 
-RUN pip install shapely && \
-    pip install wstool
+# RUN pip install shapely && \
+#     pip install wstool
 
 # RUN apt install ros-melodic-desktop-full
 
