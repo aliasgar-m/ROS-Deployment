@@ -11,13 +11,13 @@ RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E
 
 RUN apt install ros-melodic-desktop-full
 
+RUN python -m pip install --upgrade pip
+
 # RUN apt-get install -y \
 #     python-rosdep \
 #     python-pip \
 #     python-wstool && \
 #     python-shapely
-
-
 
 
 # ARG ROS_DISTRO=melodic
