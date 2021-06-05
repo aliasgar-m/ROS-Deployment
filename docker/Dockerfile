@@ -25,7 +25,8 @@ RUN apt-get update && apt-get install -y \
     python-pip
     # python-catkin-tools
 
-RUN apt-get upgrade libignition-math2
+RUN apt-get upgrade -y \ 
+    libignition-math2
 
 RUN pip install shapely && \
     pip install wstool
