@@ -54,5 +54,5 @@ RUN pip install -U catkin_tools
 RUN rosdep init
 RUN rosdep update
 
-RUN echo "source ~/opt/ros/melodic/setup.bash" >> ~/.bashrc
+RUN echo "source opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
