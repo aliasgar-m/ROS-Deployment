@@ -46,8 +46,10 @@ RUN apt-get update && \
 
 RUN python -m pip install --upgrade pip
 
-RUN apt-get upgrade -y \
-    libignition-math2
+# RUN python-catkin-tools ----> not working need to change / find alternative
+
+# RUN apt-get upgrade -y \
+#     libignition-math2
 
 RUN rosdep init
 RUN rosdep update
