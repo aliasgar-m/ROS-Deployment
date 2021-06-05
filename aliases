@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#** ROS-Deployment **
+shopt -s expand_aliases
+
+
+#** Listener **
+alias listener = 
+
+#** Talker **
+alias talker = 
