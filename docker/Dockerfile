@@ -1,4 +1,6 @@
 FROM ubuntu:bionic
+LABEL Name="ROS Node Example"
+LABEL Version="0.1"
 
 USER root
 
@@ -30,47 +32,26 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
-RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-RUN source ~/.bashrc
-
 RUN apt-get install -y \
     python-rosdep \
     python-pip \
-    python-catkin-tools
+    python-catkin_tools
 
 RUN python -m pip install --upgrade pip
+
 RUN pip install - y \
     shapely \
     wstool
 
+
+# RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+# RUN source ~/.bashrc
 # sudo apt upgrade libignition-math2
-
-
-
-# ARG ROS_DISTRO=melodic
-# FROM ros:$ROS_DISTRO-ros-core
-# LABEL Name="ROS Node Example"
-# LABEL Version="0.1"
-
-# RUN apt install ros-melodic-desktop-full
 
 # ARG USER_ID=1004
 # ARG GROUP_ID=1000
 
 # RUN apt-get clean
-
-# RUN apt-get update && apt-get install -y \
-#     python-rosdep \
-#     python-pip \
-#     python-wstool && \
-#     python-shapely
-    # python-catkin-tools
-
-# RUN apt-get upgrade -y \ 
-#     libignition-math2
-
-# RUN pip install shapely && \
-#     pip install wstool
 
 # RUN rosdep init
 
