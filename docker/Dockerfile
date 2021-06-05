@@ -57,5 +57,5 @@ RUN rosdep update
 # ARG USER_ID=1004
 # ARG GROUP_ID=1000
 
-# RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+RUN echo "source ~/opt/ros/melodic/setup.bash" >> ~/.bashrc
 # RUN source ~/.bashrc
