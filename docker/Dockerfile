@@ -28,6 +28,8 @@ ENV PATH="/home/ros/.local/bin:${PATH}"
 ENV ROS_DISTRO melodic
 
 # install ros packages
+
+# RUN apt-get clean
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
@@ -43,18 +45,16 @@ RUN pip install - y \
     shapely \
     wstool
 
+RUN apt-get upgrade -y \
+    libignition-math2
 
-# RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-# RUN source ~/.bashrc
-# sudo apt upgrade libignition-math2
+RUN rosdep init
+RUN rosdep update
+
+RUN mkdir /home/ros/ws
 
 # ARG USER_ID=1004
 # ARG GROUP_ID=1000
 
-# RUN apt-get clean
-
-# RUN rosdep init
-
-# RUN rosdep update
-
-# RUN mkdir /home/ros/ws
+# RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+# RUN source ~/.bashrc
