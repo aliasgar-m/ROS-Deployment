@@ -34,16 +34,26 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y \
-    python-rosdep \
-    python-pip \
-    python-catkin_tools
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        python-rosdep \
+        python-rosinstall \
+        python-rosinstall-generator \
+        python-shapely \
+        python-wstool \
+    && rm -rf /var/lib/apt/lists/*
+
+
+# RUN apt-get install -y \
+#     python-rosdep \
+#     python-pip \
+#     python-catkin_tools
 
 RUN python -m pip install --upgrade pip
 
-RUN pip install - y \
-    shapely \
-    wstool
+# RUN pip install - y \
+#     shapely \
+#     wstool
 
 RUN apt-get upgrade -y \
     libignition-math2
