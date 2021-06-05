@@ -21,7 +21,7 @@ ENV PATH="/home/ros/.local/bin:${PATH}"
 RUN apt-get clean
 
 RUN apt-get update && apt-get install -y \
-    python-rosdep \
+    python-rosdep && \
     python-pip
     # python-catkin-tools
 
