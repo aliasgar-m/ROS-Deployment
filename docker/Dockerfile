@@ -30,6 +30,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-melodic-desktop-full=1.4.1-0* \
     && rm -rf /var/lib/apt/lists/*
 
+RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+RUN source ~/.bashrc
+
+RUN apt-get install -y \
+    python-rosdep \
+    python-pip \
+    python-catkin-tools
+
+RUN python -m pip install --upgrade pip
+RUN pip install - y \
+    shapely \
+    wstool
+
+# sudo apt upgrade libignition-math2
+
+
 
 # ARG ROS_DISTRO=melodic
 # FROM ros:$ROS_DISTRO-ros-core
@@ -37,14 +53,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # LABEL Version="0.1"
 
 # RUN apt install ros-melodic-desktop-full
-
-# RUN python -m pip install --upgrade pip
-
-# RUN apt-get install -y \
-#     python-rosdep \
-#     python-pip \
-#     python-wstool && \
-#     python-shapely
 
 # ARG USER_ID=1004
 # ARG GROUP_ID=1000
@@ -63,11 +71,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # RUN pip install shapely && \
 #     pip install wstool
-
-# RUN apt install ros-melodic-desktop-full
-
-# RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-# RUN source ~/.bashrc
 
 # RUN rosdep init
 
