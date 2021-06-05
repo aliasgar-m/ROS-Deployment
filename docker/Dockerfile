@@ -1,5 +1,7 @@
 FROM ubuntu:bionic
 
+USER root
+
 RUN echo 'Etc/UTC' > /etc/timezone && \
     ln -s /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
     apt-get update && \
@@ -20,7 +22,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 # setup environment
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
-
+ENV PATH="/home/ros/.local/bin:${PATH}"
 ENV ROS_DISTRO melodic
 
 # install ros packages
@@ -33,16 +35,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # FROM ros:$ROS_DISTRO-ros-core
 # LABEL Name="ROS Node Example"
 # LABEL Version="0.1"
-
-# USER root
-
-# ENV PATH="/home/ros/.local/bin:${PATH}"
-
-
-
-
-
-
 
 # RUN apt install ros-melodic-desktop-full
 
