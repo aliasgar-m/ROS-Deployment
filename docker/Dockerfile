@@ -36,14 +36,14 @@ RUN apt-get update && \
         python-rosinstall \
         python-rosinstall-generator \
         python-shapely \
-        python-wstool 
+        python-wstool
 
 RUN python -m pip install --upgrade pip
 
 RUN pip install -U catkin_tools
 
-# RUN apt-get upgrade -y \
-#     libignition-math2
+RUN apt-get upgrade -y \
+    libignition-math2
 
 RUN rosdep init
 RUN rosdep update
