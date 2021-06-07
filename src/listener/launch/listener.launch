@@ -1,0 +1,5 @@
+<launch>
+    <node name="Listener_Node" pkg="listener" type="listener.py" output="screen">
+        <rosparam command="load" file="$(find listener)/config/listener.yaml" /> <!--Load parameters from config files-->
+    </node>
+</launch>

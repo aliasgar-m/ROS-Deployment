@@ -1,0 +1,5 @@
+<launch>
+    <node name="Talker_Node" pkg="talker" type="talker.py" output="screen">
+        <rosparam command="load" file="$(find talker)/config/talker.yaml" /> <!--Load parameters from config files-->
+    </node>
+</launch>
