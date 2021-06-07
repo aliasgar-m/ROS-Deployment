@@ -58,6 +58,3 @@ RUN rosdep update
 
 RUN echo "source opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
-
-RUN mkdir /home/Desktop/ROS-Deployment
-
