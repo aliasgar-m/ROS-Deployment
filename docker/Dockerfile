@@ -27,7 +27,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 # install ros packages
 # RUN apt-get clean
 RUN apt-get update && apt-get install -y \
-    ros-melodic-desktop-full=1.4.1-0
+    ros-melodic-desktop-full
 
 RUN apt-get update && \
     apt-get install -y \
