@@ -29,9 +29,11 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 RUN apt-get update && apt-get install -y \
     ros-melodic-desktop-full
 
-RUN python -m pip install --upgrade pip
-
 RUN mkdir -p /home/Desktop/
+
+RUN chmod +x setup.sh
+RUN ./setup.sh
+RUN ./build.sh
 
 # RUN echo "source opt/ros/melodic/setup.bash" >> ~/.bashrc
 # RUN echo "source ~/.bashrc"
