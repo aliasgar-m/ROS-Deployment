@@ -5,7 +5,7 @@ shopt -s expand_aliases
 
 
 #** Listener **
-alias listener = 
+alias listener = roslaunch listener listener.launch
 
 #** Talker **
-alias talker = 
+alias talker = roslaunch talker talker.launch
