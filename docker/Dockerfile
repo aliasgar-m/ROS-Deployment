@@ -29,24 +29,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 RUN apt-get update && apt-get install -y \
     ros-melodic-desktop-full
 
-RUN apt-get update && \
-    apt-get install -y \
-        python-rosdep \
-        python-pip \
-        python-rosinstall \
-        python-rosinstall-generator \
-        python-shapely \
-        python-wstool
-
 RUN python -m pip install --upgrade pip
 
-RUN pip install -U catkin_tools
+RUN mkdir -p /home/Desktop/
 
-RUN apt-get upgrade -y \
-    libignition-math2
-
-RUN rosdep init
-RUN rosdep update
-
-RUN echo "source opt/ros/melodic/setup.bash" >> ~/.bashrc
-RUN echo "source ~/.bashrc"
+# RUN echo "source opt/ros/melodic/setup.bash" >> ~/.bashrc
+# RUN echo "source ~/.bashrc"
