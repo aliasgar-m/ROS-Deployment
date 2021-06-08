@@ -31,9 +31,11 @@ RUN apt-get update && apt-get install -y \
 
 RUN mkdir -p /home/Desktop/
 
-RUN chmod +x setup.sh
-RUN ./setup.sh
-RUN ./build.sh
+# clone repo and then run the below commands and check
+
+# RUN chmod +x setup.sh
+# RUN ./setup.sh
+# RUN ./build.sh
 
 # RUN echo "source opt/ros/melodic/setup.bash" >> ~/.bashrc
 # RUN echo "source ~/.bashrc"
