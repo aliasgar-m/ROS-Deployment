@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
     ros-melodic-desktop-full \
     git 
 
-RUN echo "source opt/ros/melodic/setup.bash" >> ~/.bashrc
+RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
 
 RUN mkdir -p /home/Desktop/
