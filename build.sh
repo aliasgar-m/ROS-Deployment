@@ -1,4 +1,4 @@
-sudo rosdep init
+rosdep init
 
 rosdep update
 
@@ -14,4 +14,4 @@ source ./devel/setup.bash
 
 source ./aliases
 
-echo source ~/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
+echo source home/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
