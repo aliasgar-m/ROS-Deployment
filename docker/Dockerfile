@@ -20,10 +20,6 @@ RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources
 # setup keys
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
-# setup environment
-# ENV PATH="/home/ros/.local/bin:${PATH}"
-# ENV ROS_DISTRO melodic
-
 # install ros packages
 # RUN apt-get clean
 RUN apt-get update && apt-get install -y \
@@ -41,5 +37,5 @@ RUN git clone https://github.com/aliasgar-m/Deployment-Test.git
 # RUN ./setup.sh
 # RUN ./build.sh
 
-# RUN echo "source opt/ros/melodic/setup.bash" >> ~/.bashrc
-# RUN echo "source ~/.bashrc"
+RUN echo "source opt/ros/melodic/setup.bash" >> ~/.bashrc
+RUN echo "source ~/.bashrc"
