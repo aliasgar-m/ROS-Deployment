@@ -3,9 +3,8 @@
 #** ROS-Deployment **
 shopt -s expand_aliases
 
-
 #** Listener **
-alias listener = roslaunch listener listener.launch
+alias listener='roslaunch listener listener.launch'
 
 #** Talker **
-alias talker = roslaunch talker talker.launch
+alias talker='roslaunch talker talker.launch'
