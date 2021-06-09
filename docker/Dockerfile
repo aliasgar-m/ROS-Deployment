@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
     git 
 
 RUN mkdir -p /home/Desktop/
-RUN cd home/Desktop/
+RUN cd /home/Desktop/
 RUN git clone https://github.com/aliasgar-m/Deployment-Test.git
 
 
