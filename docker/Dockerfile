@@ -27,9 +27,13 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 # install ros packages
 # RUN apt-get clean
 RUN apt-get update && apt-get install -y \
-    ros-melodic-desktop-full
+    ros-melodic-desktop-full \
+    git 
 
 RUN mkdir -p /home/Desktop/
+RUN cd home/Desktop/
+RUN git clone https://github.com/aliasgar-m/Deployment-Test.git
+
 
 # clone repo and then run the below commands and check
 
