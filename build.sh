@@ -14,4 +14,4 @@ source ./devel/setup.bash
 
 source ./aliases
 
-echo source home/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
+echo source /Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
