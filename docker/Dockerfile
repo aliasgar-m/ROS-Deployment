@@ -33,4 +33,4 @@ RUN mkdir -p /home/Desktop/
 RUN cd /home/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
 WORKDIR /home/Desktop/Deployment-Test
 RUN ./setup.sh
-# RUN ./build.sh
+RUN ./build.sh
