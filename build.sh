@@ -12,7 +12,7 @@ catkin build
 
 source environment.sh
 
-# source /home/Desktop/Deployment-Test/devel/setup.bash
+source ./setup.bash
 
 source ./aliases
 
