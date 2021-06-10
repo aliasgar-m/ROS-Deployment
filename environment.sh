@@ -2,9 +2,7 @@
 
 CATKIN_SHELL=bash
 
-export DEPLOY_ROOT=$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
-
-printf "Sourcing Deployment-Test/devel/setup.bash\n"
+export DEPLOY_ROOT=$(pwd)
 
 # check whether devel folder exists
 if [ -f "${DEPLOY_ROOT}/devel/setup.bash" ]; then
