@@ -22,15 +22,17 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 
 # install ros packages
 # RUN apt-get clean
-RUN apt-get update && apt-get install -y \
-    ros-melodic-desktop-full \
-    git 
+# RUN apt-get update && apt-get install -y \
+#     ros-melodic-desktop-full \
+#     git 
 
-RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-RUN echo "source ~/.bashrc"
+# RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+# RUN echo "source ~/.bashrc"
 
-RUN mkdir -p /home/Desktop/
-RUN cd /home/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
-WORKDIR /home/Desktop/Deployment-Test
-RUN ./setup.sh
-RUN ./build.sh
+USER Orion
+
+# RUN mkdir -p /home/Orion/Desktop/
+# RUN cd /home/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
+# WORKDIR /home/Desktop/Deployment-Test
+# RUN ./setup.sh
+# RUN ./build.sh
