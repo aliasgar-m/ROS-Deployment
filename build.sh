@@ -10,8 +10,8 @@ catkin build
 
 source environment.sh
 
-source /home/Desktop/Deployment-Test/devel/setup.bash
+# source /home/Desktop/Deployment-Test/devel/setup.bash
 
 source ./aliases
 
-echo source /home/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
+# echo source /home/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
