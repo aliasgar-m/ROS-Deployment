@@ -34,6 +34,6 @@ USER Orion
 
 RUN mkdir -p /home/Orion/Desktop/
 RUN cd /home/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
-WORKDIR /home/Desktop/Deployment-Test
+WORKDIR /home/Orion/Desktop/Deployment-Test
 RUN ./setup.sh
 # RUN ./build.sh
