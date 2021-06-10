@@ -29,11 +29,12 @@ RUN apt-get update && apt-get install -y \
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
 
-RUN useradd -ms /bin/bash Orion
-USER Orion
+# RUN useradd -ms /bin/bash Orion
+# RUN echo 
+# USER Orion
 
 RUN mkdir -p /home/Orion/Desktop/
 RUN cd /home/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
 WORKDIR /home/Orion/Desktop/Deployment-Test
-# RUN ./setup.sh
-# RUN ./build.sh
+RUN ./setup.sh
+RUN ./build.sh
