@@ -21,11 +21,11 @@ RUN useradd -ms /bin/bash Orion
 RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
 USER Orion
 
-# # setup sources.list
-# RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list
+# setup sources.list
+RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list
 
-# # setup keys
-# RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+# setup keys
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
 # # install packages for ROS
 # RUN apt-get update && apt-get install -y \
