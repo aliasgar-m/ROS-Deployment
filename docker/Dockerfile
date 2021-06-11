@@ -38,7 +38,7 @@ WORKDIR /home/Orion/Desktop/Deployment-Test
 
 # install dependencies and build
 RUN ./setup.sh
-# RUN ./build.sh
+RUN ./build.sh
 
 
 # # new user added
