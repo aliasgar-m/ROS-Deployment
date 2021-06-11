@@ -12,7 +12,7 @@ catkin build
 
 source environment.sh
 
-source ./setup.bash
+source ./devel/setup.bash
 
 source ./aliases
 
