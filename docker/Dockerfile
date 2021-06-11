@@ -22,11 +22,11 @@ RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources
 # setup keys
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
-# new user added
-RUN useradd -ms /bin/bash Orion
-RUN echo "Orion ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
-    chmod 0440 /etc/sudoers.d/ros
-USER Orion
+# # new user added
+# RUN useradd -ms /bin/bash Orion
+# RUN echo "Orion ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
+#     chmod 0440 /etc/sudoers.d/ros
+# USER Orion
 
 # install packages for ROS
 RUN apt-get update && apt-get install -y \
@@ -44,4 +44,4 @@ WORKDIR /home/Orion/Desktop/Deployment-Test
 
 # install dependencies and build
 RUN ./setup.sh
-# RUN ./build.sh
+RUN ./build.sh
