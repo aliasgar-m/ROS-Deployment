@@ -32,9 +32,9 @@ RUN apt-get update && apt-get install -y \
     ros-melodic-desktop-full \
     git 
 
-# # source ROS Files
-# RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-# RUN echo "source ~/.bashrc"
+# source ROS Files
+RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+RUN echo "source ~/.bashrc"
 
 # # clone workspace
 # RUN mkdir -p /home/Orion/Desktop/
