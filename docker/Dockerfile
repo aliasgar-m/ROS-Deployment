@@ -13,7 +13,7 @@ RUN echo 'Etc/UTC' > /etc/timezone && \
 
 # new user added
 RUN useradd -ms /bin/bash Orion
-RUN echo "Orion ALL=(root) NOPASSWD:ALL" > /etc/sudoers
+RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
 USER Orion
 
 # install packages for setup
