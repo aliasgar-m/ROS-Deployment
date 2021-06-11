@@ -11,6 +11,9 @@ RUN echo 'Etc/UTC' > /etc/timezone && \
     apt-get update && \
     apt-get install -q -y --no-install-recommends tzdata
 
+RUN apt-get update && apt-get install -q -y --no-install-recommends \
+    dirmngr
+
 # new user added
 RUN useradd -ms /bin/bash Orion
 RUN echo "Orion ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
@@ -19,7 +22,6 @@ USER Orion
 
 # install packages for setup
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
-    dirmngr \
     gnupg2
 
 # setup sources.list
