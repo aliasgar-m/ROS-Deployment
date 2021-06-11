@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo rosdep init
 
 sudo rosdep fix-permissions
