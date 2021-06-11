@@ -12,7 +12,7 @@ catkin build
 
 source environment.sh
 
-source ./devel/setup.bash
+source /home/Orion/Desktop/Deployment-Test/devel/setup.bash
 
 source ./aliases
 
