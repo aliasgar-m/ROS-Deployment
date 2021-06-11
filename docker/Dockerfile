@@ -29,10 +29,9 @@ RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
 
 RUN useradd -ms /bin/bash Orion
-USER Orion
-
 RUN echo "Orion ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
     chmod 0440 /etc/sudoers.d/ros
+USER Orion
 
 RUN mkdir -p /home/Orion/Desktop/
 RUN cd /home/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
