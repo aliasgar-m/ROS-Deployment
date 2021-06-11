@@ -20,8 +20,7 @@ RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources
 # setup keys
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
-# install ros packages
-# RUN apt-get clean
+# install packages
 RUN apt-get update && apt-get install -y \
     ros-melodic-desktop-full \
     git 
@@ -37,4 +36,4 @@ RUN mkdir -p /home/Orion/Desktop/
 RUN cd /home/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
 WORKDIR /home/Orion/Desktop/Deployment-Test
 RUN ./setup.sh
-# RUN ./build.sh
+RUN ./build.sh
