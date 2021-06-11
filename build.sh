@@ -1,4 +1,4 @@
-rosdep init
+sudo rosdep init
 
 sudo rosdep fix-permissions
 
