@@ -27,10 +27,10 @@ RUN useradd -ms /bin/bash Orion
 RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
 USER Orion
 
-# # install packages for ROS
-# RUN apt-get update && apt-get install -y \
-#     ros-melodic-desktop-full \
-#     git 
+# install packages for ROS
+RUN apt-get update && apt-get install -y \
+    ros-melodic-desktop-full \
+    git 
 
 # # source ROS Files
 # RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
