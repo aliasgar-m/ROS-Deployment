@@ -22,11 +22,6 @@ RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources
 # setup keys
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
-# new user added
-RUN useradd -ms /bin/bash Orion
-RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
-USER Orion
-
 # install packages for ROS
 RUN apt-get update && apt-get install -y \
     ros-melodic-desktop-full \
@@ -36,11 +31,17 @@ RUN apt-get update && apt-get install -y \
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
 
-# # clone workspace
-# RUN mkdir -p /home/Orion/Desktop/
-# RUN cd /home/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
-# WORKDIR /home/Orion/Desktop/Deployment-Test
+# clone workspace
+RUN mkdir -p /home/Orion/Desktop/
+RUN cd /home/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
+WORKDIR /home/Orion/Desktop/Deployment-Test
 
-# # install dependencies and build
-# RUN ./setup.sh
+# install dependencies and build
+RUN ./setup.sh
 # RUN ./build.sh
+
+
+# # new user added
+# RUN useradd -ms /bin/bash Orion
+# RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
+# USER Orion
