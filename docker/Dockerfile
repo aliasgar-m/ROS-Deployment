@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
     git 
 
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-RUN source ~/.bashrc
+RUN echo "source ~/.bashrc"
 
 RUN useradd -ms /bin/bash Orion
 RUN echo "Orion ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/ros && \
