@@ -11,15 +11,15 @@ RUN echo 'Etc/UTC' > /etc/timezone && \
     apt-get update && \
     apt-get install -q -y --no-install-recommends tzdata
 
-# new user added
-RUN useradd -ms /bin/bash Orion
-RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
-USER Orion
-
 # install packages for setup
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
     dirmngr \
     gnupg2
+
+# new user added
+RUN useradd -ms /bin/bash Orion
+RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
+USER Orion
 
 # # setup sources.list
 # RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list
