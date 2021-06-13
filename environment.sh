@@ -6,6 +6,7 @@ export FSD_ROOT=$( pwd )
 
 printf "ROS Deployment Test 1\n"
 printf "Sourcing Deployment-Test/devel/setup.bash\n"
+printf "${FSD_ROOT}"
 
 # check whether devel folder exists
 if [ -f "${FSD_ROOT}/devel/setup.bash" ]; then
