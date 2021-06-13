@@ -2,8 +2,9 @@
 
 CATKIN_SHELL=bash
 
-export FSD_ROOT= $(pwd)
+export FSD_ROOT=$( pwd ) 
 
+printf "ROS Deployment Test 1"
 printf "Sourcing Deployment-Test/devel/setup.bash\n"
 
 # # check whether devel folder exists
