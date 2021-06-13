@@ -43,5 +43,5 @@ WORKDIR /root/Orion/Desktop/Deployment-Test
 RUN git pull
 
 # # install dependencies and build
-# RUN ./setup.sh
+RUN ./setup.sh
 # RUN ./build.sh
