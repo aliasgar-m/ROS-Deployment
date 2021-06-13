@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:18.04
 LABEL Name="ROS Node Example"
 LABEL Version="0.1"
 
@@ -14,7 +14,8 @@ RUN echo 'Etc/UTC' > /etc/timezone && \
 # install packages for setup
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
     dirmngr \
-    gnupg2
+    gnupg2 \
+&& rm -rf /var/lib/apt/lists/*
 
 # setup sources.list
 RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list
@@ -25,7 +26,8 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 # install packages for ROS
 RUN apt-get update && apt-get install -y \
     ros-melodic-desktop-full \
-    git 
+    git \
+&& rm -rf /var/lib/apt/lists/*
 
 # source ROS Files
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
