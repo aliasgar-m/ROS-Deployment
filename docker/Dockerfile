@@ -44,4 +44,4 @@ RUN git pull
 
 # # install dependencies and build
 RUN ./setup.sh
-RUN ./build.sh
+# RUN ./build.sh
