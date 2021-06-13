@@ -15,6 +15,9 @@ RUN echo 'Etc/UTC' > /etc/timezone && \
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
     dirmngr \
     gnupg2 \
+    # apt-utils \
+    # build-essential curl file git locales sudo && \
+    # apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 
 # setup sources.list
