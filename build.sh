@@ -8,7 +8,7 @@ echo export ROS_DISTRO='melodic' >> ~/.bashrc
 
 echo export ROS_PYTHON_VERSION='2' >> ~/.bashrc
 
-source /opt/ros/melodic/devel
+catkin config --extend /opt/ros/melodic/devel/
 
 catkin build
 
