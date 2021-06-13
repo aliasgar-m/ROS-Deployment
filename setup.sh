@@ -2,7 +2,7 @@
 
 sudo apt-get install python-rosdep python-catkin-tools python-pip -y
 
-sudo apt-get install rosinstall rosinstall-generator checkinstall git-lfs -y
+sudo apt-get install python-rosinstall python-rosinstall-generator checkinstall git-lfs -y
 
 sudo python -m pip install --upgrade pip
 
