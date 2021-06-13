@@ -2,10 +2,9 @@
 
 CATKIN_SHELL=bash
 
-export FSD_ROOT= ${/home/Desktop/Deployment-Test}
-printf FSD_ROOT
+export FSD_ROOT= $(pwd)
 
-# printf "Sourcing Deployment-Test/devel/setup.bash\n"
+printf "Sourcing Deployment-Test/devel/setup.bash\n"
 
 # # check whether devel folder exists
 # if [ -f "FSD_ROOT/devel/setup.bash" ]; then
