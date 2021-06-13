@@ -15,6 +15,7 @@ RUN echo 'Etc/UTC' > /etc/timezone && \
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
     dirmngr \
     gnupg2 \
+    git \
     # apt-utils \
     # build-essential curl file git locales sudo && \
     # apt-get clean \
@@ -28,9 +29,8 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 
 # install packages for ROS
 RUN apt-get update && apt-get install -y \
-    ros-melodic-desktop-full \
-    git \
-&& rm -rf /var/lib/apt/lists/*
+    ros-melodic-desktop-full
+# && rm -rf /var/lib/apt/lists/*
 
 # source ROS Files
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
