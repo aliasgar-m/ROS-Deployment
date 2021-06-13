@@ -1,4 +1,4 @@
-sudo rosdep init
+rosdep init
 
 # sudo rosdep fix-permissions
 
@@ -12,8 +12,8 @@ catkin build
 
 source environment.sh
 
-# source /home/Orion/Desktop/Deployment-Test/devel/setup.bash
+source ./devel/setup.bash
 
-# source ./aliases
+source ./aliases
 
-# echo source /home/Orion/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
+echo source ~/Orion/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
