@@ -16,4 +16,4 @@ else
     printf "Run 'catkin build' in the skeleton_repo directory\n"
 fi
 
-source ${FSD_ROOT}/fsd_aliases
+source ${FSD_ROOT}/aliases
