@@ -31,18 +31,17 @@ RUN apt-get update && apt-get install -y \
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
 
+# new user added
+RUN useradd -ms /bin/bash Orion
+RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
+USER Orion
+
 # clone workspace
 RUN mkdir -p /home/Orion/Desktop/
 RUN cd /home/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
 WORKDIR /home/Orion/Desktop/Deployment-Test
 RUN git pull
 
-# install dependencies and build
-RUN ./setup.sh
-RUN ./build.sh
-
-
-# # new user added
-# RUN useradd -ms /bin/bash Orion
-# RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
-# USER Orion
+# # install dependencies and build
+# RUN ./setup.sh
+# RUN ./build.sh
