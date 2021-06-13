@@ -39,9 +39,9 @@ RUN echo "source ~/.bashrc"
 # clone workspace
 RUN mkdir -p ~/Orion/Desktop/
 RUN cd ~/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
-# WORKDIR /root/Orion/Desktop/Deployment-Test
-RUN cd ~/Orion/Desktop/Deployment-Test/ && git pull
+WORKDIR /root/Orion/Desktop/Deployment-Test
+RUN git pull
 
 # # install dependencies and build
-RUN cd ~/Orion/Desktop/Deployment-Test/ && ./setup.sh
-RUN cd ~/Orion/Desktop/Deployment-Test/ && ./build.sh
+RUN ./setup.sh
+# RUN ./build.sh
