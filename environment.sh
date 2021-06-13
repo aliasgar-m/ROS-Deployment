@@ -15,6 +15,6 @@ if [ -f "${FSD_ROOT}/devel/setup.bash" ]; then
 #     source "/opt/ros/melodic/setup.bash"
 #     printf "You need to build first before you can source\n"
 #     printf "Run 'catkin build' in the skeleton_repo directory\n"
-# fi
+fi
 
 # source ${FSD_ROOT}/aliases
