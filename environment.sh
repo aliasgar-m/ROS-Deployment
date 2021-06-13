@@ -2,7 +2,7 @@
 
 CATKIN_SHELL=bash
 
-export FSD_ROOT=$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
+export FSD_ROOT=$(pwd)
 
 printf "Sourcing Deployment-Test/devel/setup.bash\n"
 
