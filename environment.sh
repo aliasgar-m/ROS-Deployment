@@ -2,7 +2,7 @@
 
 CATKIN_SHELL=bash
 
-export FSD_ROOT= "/home/Desktop/Deployment-Test"
+export FSD_ROOT= /home/Desktop/Deployment-Test
 printf FSD_ROOT
 
 # printf "Sourcing Deployment-Test/devel/setup.bash\n"
