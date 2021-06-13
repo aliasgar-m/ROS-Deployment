@@ -32,8 +32,8 @@ RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
 
 # new user added
-RUN useradd -ms /bin/bash Orion
-RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
+# RUN useradd -ms /bin/bash Orion
+# RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
 # USER Orion
 
 # clone workspace
@@ -43,5 +43,5 @@ WORKDIR /root/Orion/Desktop/Deployment-Test
 RUN git pull
 
 # # install dependencies and build
-RUN ./setup.sh
-RUN ./build.sh
+# RUN ./setup.sh
+# RUN ./build.sh
