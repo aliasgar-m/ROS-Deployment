@@ -20,4 +20,4 @@ source ./devel/setup.bash
 
 source ./aliases
 
-echo source ~/Orion/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
+echo source ~/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
