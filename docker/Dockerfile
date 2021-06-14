@@ -44,5 +44,3 @@ RUN git pull
 # # install dependencies and build
 RUN ./setup.sh
 RUN ./build.sh
-
-CMD ["roscore", "roslaunch talker talker.launch", "roslaunch listener listener.launch"]
