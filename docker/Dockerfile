@@ -42,6 +42,7 @@ RUN echo "source ~/.bashrc"
 # USER Orion
 
 # clone workspace
+RUN pwd
 RUN mkdir -p ~/Orion/Desktop/
 RUN cd ~/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
 WORKDIR /root/Orion/Desktop/Deployment-Test
