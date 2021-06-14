@@ -33,6 +33,7 @@ RUN apt-get update && apt-get install -y \
 # && rm -rf /var/lib/apt/lists/*
 
 # source ROS Files
+RUN pwd
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
 
@@ -42,7 +43,6 @@ RUN echo "source ~/.bashrc"
 # USER Orion
 
 # clone workspace
-RUN pwd
 RUN mkdir -p ~/Orion/Desktop/
 RUN cd ~/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
 WORKDIR /root/Orion/Desktop/Deployment-Test
