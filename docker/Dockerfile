@@ -13,10 +13,10 @@ RUN echo 'Etc/UTC' > /etc/timezone && \
 
 # install packages for setup
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
+    apt-utils \
     dirmngr \
     gnupg2 \
     git \
-    apt-utils \
     # build-essential curl file git locales sudo && \
     # apt-get clean \
 && rm -rf /var/lib/apt/lists/*
