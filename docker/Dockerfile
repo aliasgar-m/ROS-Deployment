@@ -17,8 +17,7 @@ RUN apt-get update && apt-get install -q -y --no-install-recommends \
     dirmngr \
     gnupg2 \
     git \
-    # build-essential curl file git locales sudo && \
-    # apt-get clean \
+    apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 
 # setup sources.list
@@ -29,22 +28,17 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 
 # install packages for ROS
 RUN apt-get update && apt-get install -y \
-    ros-melodic-desktop-full
-# && rm -rf /var/lib/apt/lists/*
+    ros-melodic-desktop-full \
+&& rm -rf /var/lib/apt/lists/*
 
 # source ROS Files
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 RUN echo "source ~/.bashrc"
 
-# new user added
-# RUN useradd -ms /bin/bash Orion
-# RUN echo "Orion ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
-# USER Orion
-
 # clone workspace
-RUN mkdir -p ~/Orion/Desktop/
-RUN cd ~/Orion/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
-WORKDIR /root/Orion/Desktop/Deployment-Test
+RUN mkdir -p ~/Desktop/
+RUN cd ~/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
+WORKDIR /root/Desktop/Deployment-Test
 RUN git pull
 
 # # install dependencies and build
