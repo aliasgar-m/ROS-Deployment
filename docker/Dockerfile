@@ -39,6 +39,7 @@ RUN echo "source ~/.bashrc"
 RUN mkdir -p ~/Desktop/
 RUN cd ~/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
 WORKDIR /root/Desktop/Deployment-Test
+ARG CACHEBUST
 RUN git pull
 
 # # install dependencies and build
