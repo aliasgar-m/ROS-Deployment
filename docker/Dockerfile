@@ -40,5 +40,6 @@ ARG CACHEBUST
 RUN git pull
 
 # # install dependencies and build
+RUN pwd
 RUN ./setup.sh
 RUN ./build.sh
