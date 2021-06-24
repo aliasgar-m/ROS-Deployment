@@ -16,9 +16,7 @@ RUN apt-get update && apt-get install -q -y --no-install-recommends \
     apt-utils \
     dirmngr \
     gnupg2 \
-    git \
-    apt-get clean \
-&& rm -rf /var/lib/apt/lists/*
+    git
 
 # setup sources.list
 RUN echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros1-latest.list
@@ -28,8 +26,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6
 
 # install packages for ROS
 RUN apt-get update && apt-get install -y \
-    ros-melodic-desktop-full \
-&& rm -rf /var/lib/apt/lists/*
+    ros-melodic-desktop-full
 
 # source ROS Files
 RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
