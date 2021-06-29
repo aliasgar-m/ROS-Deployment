@@ -4,6 +4,8 @@ CATKIN_SHELL=bash
 
 export DEPLOY_ROOT=$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
 
+echo export DEPLOY_ROOT=$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd) >> ~/.bashrc
+
 printf "Sourcing ROS Docker/devel/setup.bash\n"
 
 # check whether devel folder exists
