@@ -1,5 +1,3 @@
-#!/bin/bash -i
+#!/bin/bash
 
-set -m
-
-roscore & (sleep 10 && talk & (sleep 10 && listen))
+(sleep 10 && talk & (sleep 10 && listen))
