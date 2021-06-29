@@ -43,4 +43,4 @@ RUN git pull
 RUN ./setup.sh
 RUN ./build.sh
 
-CMD ["/bin/bash", "roscore"]
+CMD ["roscore & ./run.sh"]
