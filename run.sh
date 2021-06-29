@@ -2,4 +2,4 @@
 
 set -m
 
-(sleep 10 && talk & (sleep 10 && listen))
+roscore & (sleep 10 && talk & (sleep 10 && listen))
