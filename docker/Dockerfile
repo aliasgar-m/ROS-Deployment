@@ -34,12 +34,13 @@ RUN echo "source ~/.bashrc"
 
 # clone workspace
 RUN mkdir -p ~/Desktop/
-RUN cd ~/Desktop/ && git clone https://github.com/aliasgar-m/Deployment-Test.git
-WORKDIR /root/Desktop/Deployment-Test
+RUN cd ~/Desktop/ && git clone https://github.com/aliasgar-m/ROS-Deployment.git
+WORKDIR /root/Desktop/ROS-Deployment
 ARG CACHEBUST
 RUN git pull
 
 # # install dependencies and build
-RUN pwd
 RUN ./setup.sh
 RUN ./build.sh
+
+CMD ["/bin/bash", "roscore"]
