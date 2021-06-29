@@ -7,12 +7,12 @@ from std_msgs.msg import String
 def loadParameter():
     listener_topic_name = \
             rospy.get_param("/Listener_Node/listener_topic_name",
-                            "/ros-docker")
+                            "/rosdocker")
     return str(listener_topic_name)
 
 
 def callback(data):
-    rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
+    rospy.loginfo("I heard %s\n", data.data)
 
 
 def listener():

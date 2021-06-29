@@ -7,7 +7,7 @@ from std_msgs.msg import String
 def loadParameter():
     talker_topic_name = \
             rospy.get_param("/Talker_Node/talker_topic_name",
-                            "/ros-docker")
+                            "/rosdocker")
     node_rate = rospy.get_param("/Talker_Node/node_rate", 1)
     return str(talker_topic_name), node_rate
 
@@ -22,7 +22,6 @@ def talker():
         hello_str = "hello world"
         rospy.loginfo(hello_str)
         pub.publish(hello_str)
-        print("\n")
         rate.sleep()
 
 

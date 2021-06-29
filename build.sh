@@ -12,12 +12,16 @@ echo export ROS_PYTHON_VERSION='2' >> ~/.bashrc
 
 source /opt/ros/melodic/setup.bash
 
-catkin build
-
 source environment.sh
 
 source ./devel/setup.bash
 
 source ./aliases
 
-echo source ~/Desktop/Deployment-Test/devel/setup.bash >> ~/.bashrc
+catkin build
+
+echo source ${DEPLOY_ROOT}/devel/setup.bash >> ~/.bashrc
+
+echo source ${DEPLOY_ROOT}/aliases >> ~/.bashrc
+
+chmod +x ${DEPLOY_ROOT}/run.sh
